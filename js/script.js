@@ -17,9 +17,9 @@ const icons = [
     {name: 'user-secret', prefix: 'fa-',type: 'user',family: 'fas', },
 ];
 
-incons.forEach((element) => {
+icons.forEach((element) => {
     const {name, prefix, type, family} = element;
-    // console.log(type);
+    console.log(type);
     document.getElementById('boxIcon').innerHTML += (
         
         `

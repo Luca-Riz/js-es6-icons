@@ -1,9 +1,20 @@
+header, nav {
+    height: 70px;
+}
+
+
 h1 {
     color: #29b1dd;
 }
 
 nav {
     background-color: #29b1dd;
+}
+
+main {
+    height: calc(100vh - 140px);
+    background-color: lightgrey;
+    overflow-y: auto;
 }
 
 

@@ -14,11 +14,11 @@
 </head>
 <body>
 
-    <header>
+    <header class="d-flex align-items-center">
         <h1>Fonticons</h1>
     </header>
 
-    <nav class="text-center">
+    <nav class="text-center d-flex align-items-center justify-content-center">
         <div class="centrato text-uppercase ">
             <span>Filtra per tipo</span> 
             <select name="pets" id="pet-select">
@@ -34,10 +34,22 @@
     </nav>
 
     <main>
-        <div class="ret_animal">
-            <i class="fas fa-cat"></i>
-            <span class="name text-uppercase">Cats</span>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="ret_animal bg-light d-flex justify-content-center">
+                        <div><i class="fas fa-cat"></i></div>
+                        <div class="name text-uppercase">Cats</div>
+                    </div>             
+                </div>
+            </div>
         </div>
+
+
+
+
+
     </main>
 
 

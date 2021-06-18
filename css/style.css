@@ -17,7 +17,9 @@ main {
     overflow-y: auto;
 }
 
-
+.ret_animal {
+    height: 100px;
+}
 
 
 

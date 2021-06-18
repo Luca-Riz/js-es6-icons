@@ -27,3 +27,14 @@ main {
     display: block;
 }
 
+.animal {
+    color: blue;
+}
+
+.vegetable {
+    color: green;
+}
+
+.user {
+    color: violet;
+}

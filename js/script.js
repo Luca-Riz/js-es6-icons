@@ -20,7 +20,7 @@ const icons = [
 
 
 const coloredArray = colorIcons(icons);
-print(coloredArray);
+printIcons(coloredArray);
 
 const types = [];
 
@@ -36,27 +36,40 @@ coloredArray.forEach((element) => {
         `
     }
 });
-console.log(types);
+
+//cosa deve fare quando vado a modificare comando select
+const select = document.getElementById('type');
+
+select.addEventListener("change", function() {
+    const valoreSelect = select.value;
+    console.log(valoreSelect);
+    const filteredIcons = coloredArray.filter((element) => {
+        return element.type == valoreSelect;
+    });
+    printIcons('filteredIcons');
+});
 
 
 /*--------- funzioni ---------*/
-function print(array){
+
+function printIcons(array){
+    document.getElementById('boxIcon').innerHTML = '';
+
     array.forEach((element) => {
         //destructuring
-        const {name, prefix, color, family, type} = element;
+        const {color, family, name, prefix} = element;
 
-        document.getElementById('boxIcon').innerHTML += (  
+        //template literal
+        const elementHTML = `
+        <div class="col-2">
+            <div class="ret_animal bg-light d-flex flex-column justify-content-center align-items-center rounded-3 my-4">
+                <div><i class="${family} ${prefix}${name} ${type} fs-1" style="color:${color}"></i></div>
+                <div class="name text-uppercase fs-5">${name}</div>
+            </div>             
+        </div>
+        `;
 
-            //cosa passo all'HTML pescando le varie caratteristiche dall'array - template literal   
-            `
-            <div class="col-2">
-                <div class="ret_animal bg-light d-flex flex-column justify-content-center align-items-center rounded-3 my-4">
-                    <div><i class="${family} ${prefix}${name} ${type} fs-1" style="color:${color}"></i></div>
-                    <div class="name text-uppercase fs-5">${name}</div>
-                </div>             
-            </div>
-            `
-        );
+        document.getElementById('boxIcon').innerHTML += elementHTML;
     });
 }
 

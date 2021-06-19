@@ -23,16 +23,13 @@ icons.forEach((element) => {
     document.getElementById('boxIcon').innerHTML += (
         
         `
-        <div class="row">
-            <div class="col-2">
-                <div class="ret_animal bg-light d-flex justify-content-center rounded-3 my-4">
-                    <div><i class="${family} ${prefix}${name} ${type}"></i></div>
-                    <div class="name text-uppercase">${name}</div>
-                </div>             
-            </div>
-        </div>  
+        <div class="col-2">
+            <div class="ret_animal bg-light d-flex flex-column justify-content-center align-items-center rounded-3 my-4">
+                <div><i class="${family} ${prefix}${name} ${type} fs-1"></i></div>
+                <div class="name text-uppercase fs-5">${name}</div>
+            </div>             
+        </div>
         `
-
     );
 });
 

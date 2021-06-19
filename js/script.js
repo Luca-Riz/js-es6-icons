@@ -17,31 +17,37 @@ const icons = [
     {name: 'user-secret', prefix: 'fa-',type: 'user',family: 'fas', },
 ];
 
-const coloredArray = icons.map((element) => {
-    let color = 'violet';
-    if(element.type == 'animal'){
-        color = 'blue';
-    } else if (element.type == 'vegetable'){
-        color = 'green';
-    }
 
 
-    return {
-        ...element,
-        color
-    }
-});
-
+const coloredArray = colorIcons(icons);
 print(coloredArray);
 
-console.log(coloredArray);
+const types = [];
+
+//creazione di array delle sole type
+coloredArray.forEach((element) => {
+    //se types non è incluso in element, allora pushalo
+    if(!types.includes(element.type)){
+        types.push(element.type);
+        //passo i valori degli element all'html in type
+        document.getElementById('type').innerHTML += 
+        `
+        <option value="${element.type}">${element.type}</option>
+        `
+    }
+});
+console.log(types);
+
 
 /*--------- funzioni ---------*/
 function print(array){
     array.forEach((element) => {
+        //destructuring
         const {name, prefix, color, family, type} = element;
-        // console.log(type);
-        document.getElementById('boxIcon').innerHTML += (        
+
+        document.getElementById('boxIcon').innerHTML += (  
+
+            //cosa passo all'HTML pescando le varie caratteristiche dall'array - template literal   
             `
             <div class="col-2">
                 <div class="ret_animal bg-light d-flex flex-column justify-content-center align-items-center rounded-3 my-4">
@@ -52,7 +58,24 @@ function print(array){
             `
         );
     });
+}
 
+// assegna la classe colore, poi in base a type il colore corretto
+function colorIcons(array){
+    const coloredArray = array.map((element) => {
+        let color = 'violet';
+        if(element.type == 'animal'){
+            color = 'blue';
+        } else if (element.type == 'vegetable'){
+            color = 'green';
+        }    
+    
+        return {
+            ...element,
+            color
+        }
+    });
+    return coloredArray;
 }
 
 

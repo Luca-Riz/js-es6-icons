@@ -17,18 +17,35 @@ const icons = [
     {name: 'user-secret', prefix: 'fa-',type: 'user',family: 'fas', },
 ];
 
-print(icons);
+const coloredArray = icons.map((element) => {
+    let color = 'violet';
+    if(element.type == 'animal'){
+        color = 'blue';
+    } else if (element.type == 'vegetable'){
+        color = 'green';
+    }
+
+
+    return {
+        ...element,
+        color
+    }
+});
+
+print(coloredArray);
+
+console.log(coloredArray);
 
 /*--------- funzioni ---------*/
 function print(array){
     array.forEach((element) => {
-        const {name, prefix, type, family} = element;
-        console.log(type);
+        const {name, prefix, color, family, type} = element;
+        // console.log(type);
         document.getElementById('boxIcon').innerHTML += (        
             `
             <div class="col-2">
                 <div class="ret_animal bg-light d-flex flex-column justify-content-center align-items-center rounded-3 my-4">
-                    <div><i class="${family} ${prefix}${name} ${type} fs-1"></i></div>
+                    <div><i class="${family} ${prefix}${name} ${type} fs-1" style="color:${color}"></i></div>
                     <div class="name text-uppercase fs-5">${name}</div>
                 </div>             
             </div>
@@ -42,4 +59,3 @@ function print(array){
 
 
 
-// Milestone 2 Coloriamo le icone per tipo

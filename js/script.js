@@ -4,26 +4,26 @@
 
 
 const icons = [
-    {name: 'cat', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'crow', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'dog', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'dove', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'dragon', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'horse', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'hippo', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'fish', prefix: 'fa-',type: 'animal',family: 'fas', },
-    {name: 'carrot', prefix: 'fa-',type: 'vegetable',family: 'fas', },
-    {name: 'apple-alt', prefix: 'fa-',type: 'vegetable',family: 'fas', },
-    {name: 'lemon', prefix: 'fa-',type: 'vegetable',family: 'fas', },
-    {name: 'pepper-hot', prefix: 'fa-',type: 'vegetable',family: 'fas', },
-    {name: 'user-astronaut', prefix: 'fa-',type: 'user',family: 'fas', },
-    {name: 'user-graduate', prefix: 'fa-',type: 'user',family: 'fas', },
-    {name: 'user-ninja', prefix: 'fa-',type: 'user',family: 'fas', },
-    {name: 'user-secret', prefix: 'fa-',type: 'user',family: 'fas', },
+    { name: 'cat', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'crow', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'dog', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'dove', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'dragon', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'horse', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'hippo', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'fish', prefix: 'fa-', type: 'animal', family: 'fas', },
+    { name: 'carrot', prefix: 'fa-', type: 'vegetable', family: 'fas', },
+    { name: 'apple-alt', prefix: 'fa-', type: 'vegetable', family: 'fas', },
+    { name: 'lemon', prefix: 'fa-', type: 'vegetable', family: 'fas', },
+    { name: 'pepper-hot', prefix: 'fa-', type: 'vegetable', family: 'fas', },
+    { name: 'user-astronaut', prefix: 'fa-', type: 'user', family: 'fas', },
+    { name: 'user-graduate', prefix: 'fa-', type: 'user', family: 'fas', },
+    { name: 'user-ninja', prefix: 'fa-', type: 'user', family: 'fas', },
+    { name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas', },
 ];
 
 
-
+//restituisce i colori di ogni icona un (array di oggetti) 
 const coloredArray = colorIcons(icons);
 printIcons(coloredArray);
 
@@ -32,11 +32,11 @@ const types = [];
 //creazione di array delle sole type
 coloredArray.forEach((element) => {
     //se types non è incluso in element, allora pushalo
-    if(!types.includes(element.type)){
+    if (!types.includes(element.type)) {
         types.push(element.type);
         //passo i valori degli element all'html in type
-        document.getElementById('type').innerHTML += 
-        `
+        document.getElementById('type').innerHTML +=
+            `
         <option value="${element.type}">${element.type}</option>
         `
     }
@@ -45,17 +45,15 @@ coloredArray.forEach((element) => {
 //cosa deve fare quando vado a modificare comando select
 const select = document.getElementById('type');
 
-select.addEventListener("change", function() {
+select.addEventListener("change", function () {
     const valoreSelect = select.value;
-    console.log(valoreSelect);
-    const filteredIcons = coloredArray.filter((element) => {
-        
-        return element.type == valoreSelect;
-    });
+    // console.log(valoreSelect);
+    const filteredIcons = coloredArray.filter((element) => element.type == valoreSelect);
     printIcons(filteredIcons);
+    // console.log(filteredIcons);
 
     //if per visusalizzarli tutti
-    if(valoreSelect == 'All'){
+    if (valoreSelect == 'All') {
         printIcons(coloredArray);
     }
 });
@@ -63,12 +61,12 @@ select.addEventListener("change", function() {
 
 /*--------- funzioni ---------*/
 
-function printIcons(array){
+function printIcons(array) {
     document.getElementById('boxIcon').innerHTML = '';
 
     array.forEach((element) => {
         //destructuring
-        const {color, family, name, prefix} = element;
+        const { color, family, name, prefix } = element;
 
         //template literal
         const elementHTML = `
@@ -85,15 +83,15 @@ function printIcons(array){
 }
 
 // assegna la classe colore, poi in base a type il colore corretto
-function colorIcons(array){
+function colorIcons(array) {
     const coloredArray = array.map((element) => {
         let color = 'violet';
-        if(element.type == 'animal'){
+        if (element.type == 'animal') {
             color = 'blue';
-        } else if (element.type == 'vegetable'){
+        } else if (element.type == 'vegetable') {
             color = 'green';
-        }    
-    
+        }
+
         return {
             ...element,
             color

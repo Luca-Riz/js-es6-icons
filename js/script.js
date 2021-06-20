@@ -46,7 +46,7 @@ select.addEventListener("change", function() {
     const filteredIcons = coloredArray.filter((element) => {
         return element.type == valoreSelect;
     });
-    printIcons('filteredIcons');
+    printIcons(filteredIcons);
 });
 
 

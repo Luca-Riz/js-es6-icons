@@ -1,3 +1,8 @@
+// Milestone 1 Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout. 
+// Milestone 2 Coloriamo le icone per tipo
+// Milestone 3 Creiamo una select con i tipi di icone e usiamola per filtrare le icone
+
+
 const icons = [
     {name: 'cat', prefix: 'fa-',type: 'animal',family: 'fas', },
     {name: 'crow', prefix: 'fa-',type: 'animal',family: 'fas', },
@@ -44,9 +49,11 @@ select.addEventListener("change", function() {
     const valoreSelect = select.value;
     console.log(valoreSelect);
     const filteredIcons = coloredArray.filter((element) => {
+        
         return element.type == valoreSelect;
     });
     printIcons(filteredIcons);
+
     //if per visusalizzarli tutti
     if(valoreSelect == 'All'){
         printIcons(coloredArray);

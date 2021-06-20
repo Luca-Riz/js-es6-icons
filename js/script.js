@@ -47,6 +47,10 @@ select.addEventListener("change", function() {
         return element.type == valoreSelect;
     });
     printIcons(filteredIcons);
+    //if per visusalizzarli tutti
+    if(valoreSelect == 'All'){
+        printIcons(coloredArray);
+    }
 });
 
 
